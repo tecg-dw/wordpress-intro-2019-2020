@@ -6,4 +6,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-    <p>Ceci est le header</p>
+    <header class="header">
+        <h1><?php bloginfo('name'); ?></h1>
+    </header>
+    <main class="page">
