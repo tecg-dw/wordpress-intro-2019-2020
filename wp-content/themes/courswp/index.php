@@ -5,7 +5,9 @@
     <title>Hello World</title>
 </head>
 <body>
-    <h1><?php bloginfo('name'); ?></h1>
-    <p><?php bloginfo('description'); ?></p>
+    <?php if(have_posts()): while(have_posts()): the_post(); ?>
+        <h1><?php the_title(); ?></h1>
+        <div><?php the_content(); ?></div>
+    <?php endwhile;endif; ?>
 </body>
 </html>
