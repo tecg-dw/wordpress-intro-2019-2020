@@ -10,7 +10,31 @@
 <body>
     <header class="header">
         <h1><?= cw_get_title('-', false); ?></h1>
-        <?php wp_nav_menu(['theme_location' => 'main']); ?>
-        <?php wp_nav_menu(['theme_location' => 'social']); ?>
+
+        <nav class="nav">
+            <h2 class="nav__title">Navigation principale</h2>
+            <div class="nav__container">
+                <?php foreach(cw_get_menu('main', 'nav__link') as $i => $link): ?>
+                <a
+                    href="<?= $link->url; ?>"
+                    <?php if($link->target):?>target="<?= $link->target; ?>"<?php endif; ?>
+                    <?php if($link->current):?>aria-current="page"<?php endif; ?>
+                    class="<?= implode(' ', $link->classes);?>"><?= $link->label; ?></a>
+                <?php endforeach; ?>
+            </div>
+
+            <aside class="nav__socials">
+                <h3 class="nav__subtitle">Je suis sur les réseaux sociaux</h3>
+                <div class="nav__medias">
+                    <?php foreach(cw_get_menu('social', 'nav__social') as $i => $link): ?>
+                        <a
+                            href="<?= $link->url; ?>"
+                            <?php if($link->target):?>target="<?= $link->target; ?>"<?php endif; ?>
+                            class="<?= implode(' ', $link->classes);?>"
+                        ><?= $link->label; ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </aside>
+        </nav>
     </header>
     <main class="page">
