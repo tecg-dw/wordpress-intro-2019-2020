@@ -10,5 +10,7 @@
 <body>
     <header class="header">
         <h1><?= cw_get_title('-', false); ?></h1>
+        <?php wp_nav_menu(['theme_location' => 'main']); ?>
+        <?php wp_nav_menu(['theme_location' => 'social']); ?>
     </header>
     <main class="page">

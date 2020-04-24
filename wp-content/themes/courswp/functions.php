@@ -19,3 +19,6 @@ function cw_get_title($separator = '•', $displayTitleLeft = true) {
         return get_bloginfo('name') . $separator . $title;
     }
 }
+
+register_nav_menu('main', 'Le menu de navigation principal');
+register_nav_menu('social', 'Le menu des liens réseaux sociaux');
