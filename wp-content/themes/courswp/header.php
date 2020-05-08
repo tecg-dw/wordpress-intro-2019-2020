@@ -35,6 +35,14 @@
                     <?php endforeach; ?>
                 </div>
             </aside>
+
+            <div class="nav__lang">
+                <ul>
+                <?php foreach(pll_the_languages(['raw' => true, 'echo' => false]) as $lang): ?>
+                    <li><a href="<?= $lang['url']; ?>"><?= $lang['name']; ?></a></li>
+                <?php endforeach; ?>
+                </ul>
+            </div>
         </nav>
     </header>
     <main class="page">

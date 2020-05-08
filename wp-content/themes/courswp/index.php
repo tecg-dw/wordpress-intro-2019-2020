@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
     <section>
-        <h2>Mes derniers articles</h2>
+        <h2><?= __('Mes derniers articles', 'cw'); ?></h2>
 
         <?php if(have_posts()): while(have_posts()): the_post(); ?>
 
@@ -22,7 +22,7 @@
     </section>
 
     <section>
-        <h2>Mes derniers voyages</h2>
+        <h2><?= __('Mes derniers voyages', 'cw'); ?></h2>
 
         <?php 
 
@@ -37,9 +37,9 @@
             <article class="trip">
                 <h3 class="trip__title"><?php the_title(); ?></h3>
                 <dl>
-                    <dt>Départ:</dt>
+                    <dt><?= __('Départ:', 'cw'); ?></dt>
                     <dd><?php the_field('start'); ?></dd>
-                    <dt>Retour:</dt>
+                    <dt><?= __('Retour:', 'cw'); ?></dt>
                     <dd><?php the_field('end'); ?></dd>
                 </dl>
                 <a href="<?php the_permalink(); ?>" class="trip__link">Voir mon voyage "<?php the_title(); ?>"</a>
