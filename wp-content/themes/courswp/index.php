@@ -1,22 +1,9 @@
 <?php get_header(); ?>
 
-    <?php if(have_posts()): while(have_posts()): the_post(); ?>
-
-    <h1><?php the_title(); ?></h1>
-
-    <div><?php the_content(); ?></div>
-
     <section>
         <h2>Mes derniers articles</h2>
-        
-        <?php 
 
-        $loop = new WP_Query([
-            'post_type' => 'post',
-            'posts_per_page' => -1
-        ]);
-
-        if($loop->have_posts()): while($loop->have_posts()): $loop->the_post(); ?>
+        <?php if(have_posts()): while(have_posts()): the_post(); ?>
 
         <article class="card">
             <h3 class="card__title"><?php the_title(); ?></h3>
@@ -28,6 +15,10 @@
 
         <?php endwhile;endif; ?>
 
+        <div class="pagination">
+            <?= paginate_links(); ?>
+        </div>
+
     </section>
 
     <section>
@@ -37,7 +28,8 @@
 
         $loop = new WP_Query([
             'post_type' => 'trip',
-            'posts_per_page' => -1
+            'posts_per_page' => 1,
+            'paged' => get_query_var('trips-pagination') ?: 1,
         ]);
 
         if($loop->have_posts()): while($loop->have_posts()): $loop->the_post(); ?>
@@ -55,8 +47,14 @@
 
         <?php endwhile;endif; ?>
 
-    </section>
+        <div class="pagination">
+            <?= paginate_links([
+                'format' => '?trips-pagination=%#%',
+                'current' => get_query_var('trips-pagination') ?: 1,
+                'total' =>  $loop->max_num_pages
+            ]); ?>
+        </div>
 
-    <?php endwhile;endif; ?>
+    </section>
 
 <?php get_footer(); ?>

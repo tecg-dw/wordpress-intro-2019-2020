@@ -72,3 +72,11 @@ register_post_type('trip', [
     'menu_position' => 5,
     'menu_icon' => 'dashicons-palmtree'
 ]);
+
+function cw_register_custom_query_vars($vars) {
+    $vars[] = 'trips-pagination';
+
+    return $vars;
+}
+
+add_filter('query_vars', 'cw_register_custom_query_vars');
