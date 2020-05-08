@@ -72,4 +72,3 @@ register_post_type('trip', [
     'menu_position' => 5,
     'menu_icon' => 'dashicons-palmtree'
 ]);
-

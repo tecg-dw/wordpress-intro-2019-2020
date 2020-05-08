@@ -44,6 +44,12 @@
             
             <article class="trip">
                 <h3 class="trip__title"><?php the_title(); ?></h3>
+                <dl>
+                    <dt>Départ:</dt>
+                    <dd><?php the_field('start'); ?></dd>
+                    <dt>Retour:</dt>
+                    <dd><?php the_field('end'); ?></dd>
+                </dl>
                 <a href="<?php the_permalink(); ?>" class="trip__link">Voir mon voyage "<?php the_title(); ?>"</a>
             </article>
 
