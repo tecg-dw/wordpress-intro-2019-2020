@@ -58,3 +58,18 @@ function cw_get_menu($location, $baseClass) {
 
 register_nav_menu('main', 'Le menu de navigation principal');
 register_nav_menu('social', 'Le menu des liens réseaux sociaux');
+
+register_post_type('trip', [
+    'label' => 'Voyages',
+    'labels' => [
+        'name' => 'Voyages',
+        'singular_name' => 'Voyage',
+        'add_new' => 'Ajouter nouveau',
+        'add_new_item' => 'Ajouter un nouveau voyage',
+    ],
+    'description' => 'Les récits de voyages que j\'ai effectués.',
+    'public' => true,
+    'menu_position' => 5,
+    'menu_icon' => 'dashicons-palmtree'
+]);
+
