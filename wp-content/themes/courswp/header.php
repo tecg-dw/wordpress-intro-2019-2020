@@ -44,5 +44,7 @@
                 </ul>
             </div>
         </nav>
+
+        <?php get_search_form(); ?>
     </header>
     <main class="page">
