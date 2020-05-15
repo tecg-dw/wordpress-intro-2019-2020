@@ -3,8 +3,6 @@
     Template Name: Template page "Contact"
 */
 
-$feedback = cw_handleForm();
-
 get_header(); ?>
 
     <?php if(have_posts()): while(have_posts()): the_post(); ?>
@@ -23,10 +21,10 @@ get_header(); ?>
 
         <section class="form">
             <h2 class="form__title">Mon formulaire de contact</h2>
-            <?php if($feedback): ?>
+            <?php if($feedback = cw_formFeedback('cw_custom_form_treatment')): ?>
             <p class="form__feedback form__feedback--<?= $feedback['success'] ? 'success' : 'error'; ?>"><?= $feedback['message']; ?></p>
             <?php endif; ?>
-            <form action="#" method="POST" class="form__element">
+            <form action="<?= admin_url('admin-post.php'); ?>" method="POST" class="form__element">
                 <fieldset class="form__fields">
                     <div class="form__field">
                         <label for="cw_name" class="form__label">Votre nom</label>
@@ -39,6 +37,7 @@ get_header(); ?>
                 </fieldset>
                 <div class="form__end">
                     <input type="hidden" name="cw_nonce" value="<?= wp_create_nonce('cw-custom-form'); ?>">
+                    <input type="hidden" name="action" value="cw_custom_form_treatment">
                     <button class="form__btn" type="submit">Envoyer</button>
                 </div>
             </form>
