@@ -11,5 +11,6 @@ register_post_type('trip', [
     'description' => 'Les récits de voyages que j\'ai effectués.',
     'public' => true,
     'menu_position' => 5,
-    'menu_icon' => 'dashicons-palmtree'
+    'menu_icon' => 'dashicons-palmtree',
+    'supports' => ['title','editor','thumbnail','excerpt'],
 ]);
