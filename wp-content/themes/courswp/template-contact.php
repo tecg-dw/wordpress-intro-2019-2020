@@ -3,6 +3,8 @@
     Template Name: Template page "Contact"
 */
 
+$feedback = cw_handleForm();
+
 get_header(); ?>
 
     <?php if(have_posts()): while(have_posts()): the_post(); ?>
@@ -17,6 +19,29 @@ get_header(); ?>
                     <dt class="contact__definition">toon@whitecube.be</dt>
                 </dl>
             </div>
+        </section>
+
+        <section class="form">
+            <h2 class="form__title">Mon formulaire de contact</h2>
+            <?php if($feedback): ?>
+            <p class="form__feedback form__feedback--<?= $feedback['success'] ? 'success' : 'error'; ?>"><?= $feedback['message']; ?></p>
+            <?php endif; ?>
+            <form action="#" method="POST" class="form__element">
+                <fieldset class="form__fields">
+                    <div class="form__field">
+                        <label for="cw_name" class="form__label">Votre nom</label>
+                        <input type="text" name="cw_name" id="cw_name" class="form__input" />
+                    </div>
+                    <div class="form__field">
+                        <label for="cw_message" class="form__label">Votre message</label>
+                        <textarea name="cw_message" id="cw_message" cols="30" rows="10" class="form__input"></textarea>
+                    </div>
+                </fieldset>
+                <div class="form__end">
+                    <input type="hidden" name="cw_nonce" value="<?= wp_create_nonce('cw-custom-form'); ?>">
+                    <button class="form__btn" type="submit">Envoyer</button>
+                </div>
+            </form>
         </section>
 
     <?php endwhile;endif; ?>
